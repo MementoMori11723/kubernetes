@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Config
+preferences: {}
+
+clusters:
+- cluster:
+    # This is the certificate data from the kubeconfig file
+    certificate-authority-data: <base64 encoded certificate>
+    
+    # This is the server url from the kubeconfig file
+    server: https://<name-of-the-master-node>.linodelke.net:443 
+  name: lke289006
+
+users:
+- name: lke289006-admin
+  user:
+    as-user-extra: {}
+
+    # This is the token data from the kubeconfig file
+    token: <base64 encoded token> 
+
+contexts:
+- context:
+    cluster: lke289006
+    namespace: default
+    user: lke289006-admin
+  name: lke289006-ctx
+
+current-context: lke289006-ctx

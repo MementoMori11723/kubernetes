@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+  labels:
+    app: analysis
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: analysis
+  template:
+    metadata:
+      labels:
+        app: analysis
+    spec:
+      containers:
+      - name: analysis
+        image: mementomori11723/sentimental-analysis
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
